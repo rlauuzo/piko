@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.net.Uri;
@@ -27,6 +29,7 @@ public class MediaData extends Entity {
     private final Object obj;
     /** Picture sizes within this fraction of each other differ only by rounding. */
     public static final double ROUNDING_TOLERANCE = 0.02;
+    private static final Pattern FRAME_RATE = Pattern.compile("frameRate=\"(\\d+)(?:/(\\d+))?\"");
     private final UserSession userSession;
 
     public MediaData(Object obj) {
@@ -290,6 +293,7 @@ public class MediaData extends Entity {
 
     public boolean isFirstFrameCover() {
         try {
+            if (this.isStillVideo()) return true;
             ImageData cover = this.getBestImage();
             if (cover == null) return false;
             Object[] candidates = this.getAdditionalImageCandidates();
@@ -319,6 +323,24 @@ public class MediaData extends Entity {
         if (file == null) return null;
         int dot = file.lastIndexOf('.');
         return dot > 0 ? file.substring(0, dot) : null;
+    }
+
+    /**
+     * Whether the video shows one picture throughout, as a photo with music does: every DASH
+     * rendition plays at one frame a second or slower, written as 16384/16384.
+     */
+    private boolean isStillVideo() throws Exception {
+        String manifest = getVideoDashManifest();
+        if (manifest == null) return false;
+        Matcher rate = FRAME_RATE.matcher(manifest);
+        boolean found = false;
+        while (rate.find()) {
+            long frames = Long.parseLong(rate.group(1));
+            long seconds = rate.group(2) == null ? 1 : Long.parseLong(rate.group(2));
+            if (frames > seconds) return false;
+            found = true;
+        }
+        return found;
     }
 
     // Through the app's getter, not the dict field it caches into: that field can stay null until

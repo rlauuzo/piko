@@ -230,7 +230,6 @@
     <string name="piko_download_file_name_token_variant_suffix">Variante</string>
     <string name="piko_download_current_media">Télécharger le média actuel</string>
     <string name="piko_download_as_image">Télécharger en tant qu\'image</string>
-    <string name="piko_saved_at">Enregistré à %s</string>
     <string name="piko_video_variants">Variantes vidéo</string>
     <string name="piko_image_variants">Variantes d\'image</string>
     <string name="piko_download_audio">Télécharger l\'audio</string>

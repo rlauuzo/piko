@@ -25,6 +25,8 @@ import com.instagram.common.session.UserSession;
 
 public class MediaData extends Entity {
     private final Object obj;
+    /** Picture sizes within this fraction of each other differ only by rounding. */
+    public static final double ROUNDING_TOLERANCE = 0.02;
     private final UserSession userSession;
 
     public MediaData(Object obj) {
@@ -308,7 +310,7 @@ public class MediaData extends Entity {
         // Additional frames may show a different image or aspect ratio.
         return asset != null && width > 0 && height > 0 && cw > 0 && ch > 0
                 && asset.equals(imageAsset(candidate.getUrl()))
-                && Math.abs((double) cw * height - (double) ch * width) <= (double) ch * width * 0.02;
+                && Math.abs((double) cw * height - (double) ch * width) <= (double) ch * width * ROUNDING_TOLERANCE;
     }
 
     private static String imageAsset(String url) {

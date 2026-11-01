@@ -51,7 +51,10 @@ final class MediaPicture {
         MediaPicture picture = embedded == null ? null : measured(embedded, shortSide);
         if (picture != null && picture.width > REDIRECT_WIDTH) return picture;
         MediaPicture redirected = measured(String.format(REDIRECT, shortcode), shortSide);
-        return redirected != null ? redirected : picture;
+        if (redirected == null) return picture;
+        return picture == null || redirected.width * redirected.height >= picture.width * picture.height
+                ? redirected
+                : picture;
     }
 
     /** The picture URL the embed page lists for post {@code shortcode}, or null when it lists no post. */

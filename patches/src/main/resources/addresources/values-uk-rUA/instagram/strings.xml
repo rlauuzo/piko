@@ -230,6 +230,7 @@
     <string name="piko_download_file_name_token_variant_suffix">Варіант</string>
     <string name="piko_download_current_media">Завантажити поточне медіа</string>
     <string name="piko_download_as_image">Завантажити як зображення</string>
+    <string name="piko_saved_at">Збережено о %s</string>
     <string name="piko_video_variants">Варіанти відео</string>
     <string name="piko_image_variants">Варіанти зображення</string>
     <string name="piko_download_audio">Завантажити аудіо</string>

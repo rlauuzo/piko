@@ -230,6 +230,7 @@
     <string name="piko_download_file_name_token_variant_suffix">변형</string>
     <string name="piko_download_current_media">현재 미디어 다운로드</string>
     <string name="piko_download_as_image">이미지로 다운로드</string>
+    <string name="piko_saved_at">%s에 저장됨</string>
     <string name="piko_video_variants">동영상 변형</string>
     <string name="piko_image_variants">이미지 변형</string>
     <string name="piko_download_audio">오디오 다운로드</string>

@@ -230,6 +230,7 @@
     <string name="piko_download_file_name_token_variant_suffix">解析度</string>
     <string name="piko_download_current_media">下載目前媒體</string>
     <string name="piko_download_as_image">下載為圖片</string>
+    <string name="piko_saved_at">儲存於 %s</string>
     <string name="piko_video_variants">影片解析度</string>
     <string name="piko_image_variants">圖片解析度</string>
     <string name="piko_download_audio">下載音訊</string>

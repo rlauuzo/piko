@@ -222,6 +222,7 @@
     <string name="piko_download_file_name_token_variant_suffix">Varyant</string>
     <string name="piko_download_current_media">Mevcut medyayı indir</string>
     <string name="piko_download_as_image">Resim olarak indir</string>
+    <string name="piko_saved_at">%s konumuna kaydedildi</string>
     <string name="piko_video_variants">Video varyantları</string>
     <string name="piko_image_variants">Resim varyantları</string>
     <string name="piko_download_audio">Ses olarak indir</string>

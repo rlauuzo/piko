@@ -31,4 +31,5 @@ internal object ReturnExtendedImageUrlFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC, AccessFlags.FINAL),
     returnType = EXTENDED_IMAGE_URL_CLASS,
     parameters = listOf("Ljava/lang/Integer;", "Ljava/util/List;", "I"),
+    filters = listOf(methodCall(smali = "$EXTENDED_IMAGE_URL_CLASS->getWidth()I")),
 )
